@@ -1,0 +1,10 @@
+C:\Users\Rómulo\source\repos\Interprete\Interprete\obj\Debug\Interprete.csprojAssemblyReference.cache
+C:\Users\Rómulo\source\repos\Interprete\Interprete\obj\Debug\Interprete.Form1.resources
+C:\Users\Rómulo\source\repos\Interprete\Interprete\obj\Debug\Interprete.Properties.Resources.resources
+C:\Users\Rómulo\source\repos\Interprete\Interprete\obj\Debug\Interprete.csproj.GenerateResource.cache
+C:\Users\Rómulo\source\repos\Interprete\Interprete\obj\Debug\Interprete.csproj.CoreCompileInputs.cache
+C:\Users\Rómulo\source\repos\Interprete\Interprete\bin\Debug\Interprete.exe.config
+C:\Users\Rómulo\source\repos\Interprete\Interprete\bin\Debug\Interprete.exe
+C:\Users\Rómulo\source\repos\Interprete\Interprete\bin\Debug\Interprete.pdb
+C:\Users\Rómulo\source\repos\Interprete\Interprete\obj\Debug\Interprete.exe
+C:\Users\Rómulo\source\repos\Interprete\Interprete\obj\Debug\Interprete.pdb
