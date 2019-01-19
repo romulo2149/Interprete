@@ -7,12 +7,13 @@ using Interprete;
 
 namespace Interprete
 {
-    public class Respuesta
+    class Respuesta
     {
         public Boolean estado;
         public String Mensaje;
-        private List<Instruccion> listains;
-        public string respuesta2;
+        public String instruccion;
+        public Carita cara;
+        public List<Instruccion> list;
         
     }
 }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Interprete;
@@ -105,53 +106,52 @@ namespace Interprete
             {                
                 respuesta = sintaxis.analizarSintaxis(areaEditor.Text);
                 areaErrores.Text = respuesta.Mensaje;
-                /*
-                int contador = 0;
-                string nombre = "";
-                for (int j = 0; j < respuesta.listacaras.Count; j++)
+                for(int i = 0; i < respuesta.list.Count; i++)
                 {
-                    contador = 0;
-                    Carita c = respuesta.listacaras[j];
-                    nombre = respuesta.listacaras[j].Nombre;
-                    for (int n = 0; n < respuesta.listacaras.Count; n++)
+                    Thread.Sleep(2000);
+                    switch (respuesta.list[i].Instrucciones)
                     {
-                        if (nombre == respuesta.listacaras[n].Nombre)
-                        {
-                            contador++;
-                        }
-                    }
-                    if (contador <= 1)
-                    {
-                        areaErrores.Text = respuesta.Mensaje;
-                        Graphics g = panel1.CreateGraphics();
-                        if (c.Modo == "feliz")
-                        {
+                        case "dibujar":
+                            if(respuesta.list[i].Estado == true)
+                            {
+                                Graphics g = panel1.CreateGraphics();
+                                if (respuesta.list[i].Cara.Modo == "feliz")
+                                {
 
-                            Pen p = new Pen(Color.Black);
-                            SolidBrush s = new SolidBrush(Color.Red);
-                            g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
-                            g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
-                        }
-                        if (c.Modo == "triste")
-                        {
-                            Pen p = new Pen(Color.Black);
-                            SolidBrush s = new SolidBrush(Color.Blue);
-                            g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
-                            g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
-                        }
-                        if (c.Modo == "enojada")
-                        {
-                            Pen p = new Pen(Color.Black);
-                            SolidBrush s = new SolidBrush(Color.Yellow);
-                            g.DrawEllipse(p, c.X, c.Y, c.Radio, c.Radio);
-                            g.FillEllipse(s, c.X, c.Y, c.Radio, c.Radio);
-                        }
+                                    Pen p = new Pen(Color.Black);
+                                    SolidBrush s = new SolidBrush(Color.Red);
+                                    g.DrawEllipse(p, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
+                                    g.FillEllipse(s, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
+                                }
+                                if (respuesta.list[i].Cara.Modo == "triste")
+                                {
+                                    Pen p = new Pen(Color.Black);
+                                    SolidBrush s = new SolidBrush(Color.Blue);
+                                    g.DrawEllipse(p, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
+                                    g.FillEllipse(s, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
+                                }
+                                if (respuesta.list[i].Cara.Modo == "enojada")
+                                {
+                                    Pen p = new Pen(Color.Black);
+                                    SolidBrush s = new SolidBrush(Color.Yellow);
+                                    g.DrawEllipse(p, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
+                                    g.FillEllipse(s, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
+                                }
+                            }
+                            else
+                            {
+                                textBox1.Text = textBox1.Text + respuesta.list[i].Mensaje;
+                            }
+                            break;
+                        case "eliminar":
+                            break;
+                        case "dormir":
+                            break;
+                        case "cambiar":
+                            break;
+
                     }
-                    else
-                    {
-                        areaErrores.Text = "[x][Estado : Error]\n" + "[Tipo : Semántico] Ya existe una carita con el nombre " + nombre;
-                    }
-                }*/
+                }
             }
         }
                           
