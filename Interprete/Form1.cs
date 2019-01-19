@@ -140,7 +140,8 @@ namespace Interprete
                                 }
                                 else
                                 {
-                                    textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
+                                   
+                                    textBox1.Text += textBox1.Text + respuesta.list[i].mensaje;
                                 }
                                 break;
                             case "eliminar":
@@ -169,7 +170,17 @@ namespace Interprete
                             case "error":
                                 if (respuesta.list[i].estado == true)
                                 {
-                                    areaErrores.Text = respuesta.list[i].mensaje;
+                                    if (areaErrores.Text == "")
+                                    {
+                                        areaErrores.Text = respuesta.list[i].mensaje;
+                                    }
+                                    else
+                                    {
+                                        areaErrores.Text += Environment.NewLine;
+                                        areaErrores.Text += "__________________________________________________________________";
+                                        areaErrores.Text += Environment.NewLine;
+                                        areaErrores.Text += respuesta.list[i].mensaje;
+                                    }
                                 }
                                 break;
 
@@ -230,6 +241,17 @@ namespace Interprete
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void areaEditor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+
+        }
+
+        private void areaEditor_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

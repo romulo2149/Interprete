@@ -94,7 +94,7 @@ namespace Interprete
                                                                                         ins.mensaje = respuesta.Mensaje;
                                                                                         listai.Add(ins);
                                                                                         respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                                                        i = Analiza_Lexico.NoTokens - 2;
+                                                                                        i = i+10;
                                                                                       //  return respuesta;
                                                                                     }
                                                                                 }
@@ -109,7 +109,7 @@ namespace Interprete
 
                                                                                     listai.Add(ins);
                                                                                     respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                                                    i = Analiza_Lexico.NoTokens - 2;
+                                                                                    i = i + 9;
                                                                                  //   return respuesta;
                                                                                 }
                                                                             }
@@ -123,7 +123,7 @@ namespace Interprete
                                                                                 ins.mensaje = respuesta.Mensaje;
                                                                                 listai.Add(ins);
                                                                                 respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                                                i = Analiza_Lexico.NoTokens - 2;
+                                                                                i = i+8;
                                                                                 //return respuesta;
                                                                             }
                                                                         }
@@ -137,7 +137,7 @@ namespace Interprete
                                                                             ins.mensaje = respuesta.Mensaje;
                                                                             listai.Add(ins);
                                                                             respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                                            i = Analiza_Lexico.NoTokens - 2;
+                                                                            i = i+7;
                                                                             //return respuesta;
                                                                         }
                                                                     }
@@ -151,7 +151,7 @@ namespace Interprete
                                                                         ins.mensaje = respuesta.Mensaje;
                                                                         listai.Add(ins);
                                                                         respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                                        i = Analiza_Lexico.NoTokens - 2;
+                                                                        i = i+6;
                                                                         //return respuesta;
                                                                     }
                                                                 }
@@ -165,7 +165,7 @@ namespace Interprete
                                                                     ins.mensaje = respuesta.Mensaje;
                                                                     listai.Add(ins);
                                                                     respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                                    i = Analiza_Lexico.NoTokens - 2;
+                                                                    i = i+5;
                                                                     //return respuesta;
                                                                 }
                                                             }
@@ -179,7 +179,7 @@ namespace Interprete
                                                                 ins.mensaje = respuesta.Mensaje;
                                                                 listai.Add(ins);
                                                                 respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                                i = Analiza_Lexico.NoTokens - 2;
+                                                                i = i+4;
                                                                 //return respuesta;
                                                             }
                                                         }
@@ -193,7 +193,7 @@ namespace Interprete
                                                             ins.mensaje = respuesta.Mensaje;
                                                             listai.Add(ins);
                                                             respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                            i = Analiza_Lexico.NoTokens - 2;
+                                                            i = i+3;
                                                             //return respuesta;
                                                         }
                                                     }
@@ -207,7 +207,7 @@ namespace Interprete
                                                         ins.mensaje = respuesta.Mensaje;
                                                         listai.Add(ins);
                                                         respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                        i = Analiza_Lexico.NoTokens - 2;
+                                                        i = i+2;
                                                         //return respuesta;
                                                     }
                                                 }
@@ -221,7 +221,7 @@ namespace Interprete
                                                     ins.mensaje = respuesta.Mensaje;
                                                     listai.Add(ins);
                                                     respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                    i = Analiza_Lexico.NoTokens - 2;
+                                                    i = i+1;
                                                     //return respuesta;
                                                 }
                                             }
@@ -235,7 +235,7 @@ namespace Interprete
                                                 ins.mensaje = respuesta.Mensaje;
                                                 listai.Add(ins);
                                                 respuesta.list = analiza_sem.AnalizadorSem(listai);
-                                                i = Analiza_Lexico.NoTokens - 2;
+                                                i = i+0;
                                                 //return respuesta;
                                             }
                                             break;

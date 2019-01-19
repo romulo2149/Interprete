@@ -75,7 +75,7 @@ namespace Interprete
                         lista[i].estado = true;
                         break;
                     case "error":
-                        lista[i].mensaje = "Error semántico";
+                        
                         lista[i].estado = true;
                         break;
                     case "cambiar":

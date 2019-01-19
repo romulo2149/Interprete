@@ -127,6 +127,8 @@
             this.areaEditor.Size = new System.Drawing.Size(375, 380);
             this.areaEditor.TabIndex = 0;
             this.areaEditor.Text = "";
+            this.areaEditor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.areaEditor_KeyDown);
+            this.areaEditor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.areaEditor_KeyPress);
             // 
             // resultado
             // 
