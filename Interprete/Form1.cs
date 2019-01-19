@@ -105,68 +105,80 @@ namespace Interprete
             else
             {                
                 respuesta = sintaxis.analizarSintaxis(areaEditor.Text);
-                areaErrores.Text = respuesta.Mensaje;
-                for(int i = 0; i < respuesta.list.Count; i++)
+                if (respuesta.list != null)
                 {
-                    switch (respuesta.list[i].instruccion)
+                    for (int i = 0; i < respuesta.list.Count; i++)
                     {
-                        case "dibujar":
-                            if(respuesta.list[i].estado == true)
-                            {
-                                Graphics g = panel1.CreateGraphics();
-                                if (respuesta.list[i].cara.Modo == "feliz")
+                        switch (respuesta.list[i].instruccion)
+                        {
+                            case "dibujar":
+                                if (respuesta.list[i].estado == true)
                                 {
+                                    Graphics g = panel1.CreateGraphics();
+                                    if (respuesta.list[i].cara.Modo == "feliz")
+                                    {
 
-                                    Pen p = new Pen(Color.Black);
-                                    SolidBrush s = new SolidBrush(Color.Red);
-                                    g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
-                                    g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                        Pen p = new Pen(Color.Black);
+                                        SolidBrush s = new SolidBrush(Color.Red);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                    }
+                                    if (respuesta.list[i].cara.Modo == "triste")
+                                    {
+                                        Pen p = new Pen(Color.Black);
+                                        SolidBrush s = new SolidBrush(Color.Blue);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                    }
+                                    if (respuesta.list[i].cara.Modo == "enojada")
+                                    {
+                                        Pen p = new Pen(Color.Black);
+                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                    }
                                 }
-                                if (respuesta.list[i].cara.Modo == "triste")
+                                else
                                 {
-                                    Pen p = new Pen(Color.Black);
-                                    SolidBrush s = new SolidBrush(Color.Blue);
-                                    g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
-                                    g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                    textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
                                 }
-                                if (respuesta.list[i].cara.Modo == "enojada")
+                                break;
+                            case "eliminar":
+                                if (respuesta.list[i].estado == true)
                                 {
-                                    Pen p = new Pen(Color.Black);
-                                    SolidBrush s = new SolidBrush(Color.Yellow);
+                                    Graphics g = panel1.CreateGraphics();
+                                    Pen p = new Pen(Color.White);
+                                    SolidBrush s = new SolidBrush(Color.White);
                                     g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
                                     g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
                                 }
-                            }
-                            else
-                            {
-                                textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
-                            }
-                            break;
-                        case "eliminar":
-                            if (respuesta.list[i].estado == true)
-                            {
-                                Graphics g = panel1.CreateGraphics();
-                                Pen p = new Pen(Color.White);
-                                SolidBrush s = new SolidBrush(Color.White);
-                                g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
-                                g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
-                            }
-                            else
-                            {
-                                textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
-                            }
-                            break;
-                        case "dormir":
-                            if (respuesta.list[i].estado == true)
-                            {
-                                Thread.Sleep(1000 * (respuesta.list[i].tiempo));
-                                textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
-                            }
-                            break;
-                        case "cambiar":
-                            break;
+                                else
+                                {
+                                    textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
+                                }
+                                break;
+                            case "dormir":
+                                if (respuesta.list[i].estado == true)
+                                {
+                                    Thread.Sleep(1000 * (respuesta.list[i].tiempo));
+                                    textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
+                                }
+                                break;
+                            case "cambiar":
+                                break;
+                            case "error":
+                                if (respuesta.list[i].estado == true)
+                                {
+                                    areaErrores.Text = respuesta.list[i].mensaje;
+                                }
+                                break;
 
+                        }
                     }
+                }
+                else
+                {
+                    areaErrores.Text = respuesta.Mensaje;
                 }
             }
         }

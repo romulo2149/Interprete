@@ -88,88 +88,155 @@ namespace Interprete
                                                                                     {
                                                                                         respuesta.estado = false;
                                                                                         respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en:" + Analiza_Lexico.Lexema[i + 11] + " Linea:" + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 11]) + "\n[Descripcion]: Se esperaba el elemento )";
+                                                                                        Instruccion ins = new Instruccion();
+                                                                                        ins.estado = false;
+                                                                                        ins.instruccion = "error";
+                                                                                        ins.mensaje = respuesta.Mensaje;
+                                                                                        listai.Add(ins);
+                                                                                        respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                                                         i = Analiza_Lexico.NoTokens - 2;
-                                                                                        return respuesta;
+                                                                                      //  return respuesta;
                                                                                     }
                                                                                 }
                                                                                 else
                                                                                 {
                                                                                     respuesta.estado = false;
                                                                                     respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en:" + Analiza_Lexico.Lexema[i + 10] + " Linea:" + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 10]) + "\n[Descripcion]: Se esperaba un Modo valido (triste, enojada, feliz, dormida, neutral)";
+                                                                                    Instruccion ins = new Instruccion();
+                                                                                    ins.estado = false;
+                                                                                    ins.instruccion = "error";
+                                                                                    ins.mensaje = respuesta.Mensaje;
+
+                                                                                    listai.Add(ins);
+                                                                                    respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                                                     i = Analiza_Lexico.NoTokens - 2;
-                                                                                    return respuesta;
+                                                                                 //   return respuesta;
                                                                                 }
                                                                             }
                                                                             else
                                                                             {
                                                                                 respuesta.estado = false;
                                                                                 respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en:" + Analiza_Lexico.Lexema[i + 9] + " Linea:" + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 9]) + "\n[Descripcion]: Se esperaba el elemento ,";
+                                                                                Instruccion ins = new Instruccion();
+                                                                                ins.estado = false;
+                                                                                ins.instruccion = "error";
+                                                                                ins.mensaje = respuesta.Mensaje;
+                                                                                listai.Add(ins);
+                                                                                respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                                                 i = Analiza_Lexico.NoTokens - 2;
-                                                                                return respuesta;
+                                                                                //return respuesta;
                                                                             }
                                                                         }
                                                                         else
                                                                         {
                                                                             respuesta.estado = false;
                                                                             respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en:" + Analiza_Lexico.Lexema[i + 8] + " Linea:" + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 8]) + "\n[Descripcion]: Se esperaba un tipo de nombre valido";
+                                                                            Instruccion ins = new Instruccion();
+                                                                            ins.estado = false;
+                                                                            ins.instruccion = "error";
+                                                                            ins.mensaje = respuesta.Mensaje;
+                                                                            listai.Add(ins);
+                                                                            respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                                             i = Analiza_Lexico.NoTokens - 2;
-                                                                            return respuesta;
+                                                                            //return respuesta;
                                                                         }
                                                                     }
                                                                     else
                                                                     {
                                                                         respuesta.estado = false;
                                                                         respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en:" + Analiza_Lexico.Lexema[i + 7] + " Linea:" + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 7]) + "\n[Descripcion]: Se esperaba el elemento ,";
+                                                                        Instruccion ins = new Instruccion();
+                                                                        ins.estado = false;
+                                                                        ins.instruccion = "error";
+                                                                        ins.mensaje = respuesta.Mensaje;
+                                                                        listai.Add(ins);
+                                                                        respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                                         i = Analiza_Lexico.NoTokens - 2;
-                                                                        return respuesta;
+                                                                        //return respuesta;
                                                                     }
                                                                 }
                                                                 else
                                                                 {
                                                                     respuesta.estado = false;
                                                                     respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en:" + Analiza_Lexico.Lexema[i + 6] + " Linea:" + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 6]) + "\n[Descripcion]: Se esperaba un tipo numerico";
+                                                                    Instruccion ins = new Instruccion();
+                                                                    ins.estado = false;
+                                                                    ins.instruccion = "error";
+                                                                    ins.mensaje = respuesta.Mensaje;
+                                                                    listai.Add(ins);
+                                                                    respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                                     i = Analiza_Lexico.NoTokens - 2;
-                                                                    return respuesta;
+                                                                    //return respuesta;
                                                                 }
                                                             }
                                                             else
                                                             {
                                                                 respuesta.estado = false;
                                                                 respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en: " + Analiza_Lexico.Lexema[i + 5] + " Linea:" + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 5]) + "\n[Descripcion]: Se esperaba el elemento ,";
+                                                                Instruccion ins = new Instruccion();
+                                                                ins.estado = false;
+                                                                ins.instruccion = "error";
+                                                                ins.mensaje = respuesta.Mensaje;
+                                                                listai.Add(ins);
+                                                                respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                                 i = Analiza_Lexico.NoTokens - 2;
-                                                                return respuesta;
+                                                                //return respuesta;
                                                             }
                                                         }
                                                         else
                                                         {
                                                             respuesta.estado = false;
                                                             respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en: " + Analiza_Lexico.Lexema[i + 4] + " Linea: " + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 4]) + "\n[Descripcion]: Se esperaba un tipo numerico";
+                                                            Instruccion ins = new Instruccion();
+                                                            ins.estado = false;
+                                                            ins.instruccion = "error";
+                                                            ins.mensaje = respuesta.Mensaje;
+                                                            listai.Add(ins);
+                                                            respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                             i = Analiza_Lexico.NoTokens - 2;
-                                                            return respuesta;
+                                                            //return respuesta;
                                                         }
                                                     }
                                                     else
                                                     {
                                                         respuesta.estado = false;
                                                         respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en: " + Analiza_Lexico.Lexema[i + 3] + " Linea: " + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 3]) + "\n[Descripcion]: Se esperaba el elemento ,";
+                                                        Instruccion ins = new Instruccion();
+                                                        ins.estado = false;
+                                                        ins.instruccion = "error";
+                                                        ins.mensaje = respuesta.Mensaje;
+                                                        listai.Add(ins);
+                                                        respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                         i = Analiza_Lexico.NoTokens - 2;
-                                                        return respuesta;
+                                                        //return respuesta;
                                                     }
                                                 }
                                                 else
                                                 {
                                                     respuesta.estado = false;
                                                     respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en: " + Analiza_Lexico.Lexema[i + 2] + " Linea: " + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 2]) + "\n[Descripcion]: Se esperaba un tipo numerico";
+                                                    Instruccion ins = new Instruccion();
+                                                    ins.estado = false;
+                                                    ins.instruccion = "error";
+                                                    ins.mensaje = respuesta.Mensaje;
+                                                    listai.Add(ins);
+                                                    respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                     i = Analiza_Lexico.NoTokens - 2;
-                                                    return respuesta;
+                                                    //return respuesta;
                                                 }
                                             }
                                             else
                                             {
                                                 respuesta.estado = false;
                                                 respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en:" + Analiza_Lexico.Lexema[i + 1] + " Linea:" + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 1]) + "\n[Descripcion]: Se esperaba el elemento (";
+                                                Instruccion ins = new Instruccion();
+                                                ins.estado = false;
+                                                ins.instruccion = "error";
+                                                ins.mensaje = respuesta.Mensaje;
+                                                listai.Add(ins);
+                                                respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                 i = Analiza_Lexico.NoTokens - 2;
-                                                return respuesta;
+                                                //return respuesta;
                                             }
                                             break;
 
