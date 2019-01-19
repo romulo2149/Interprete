@@ -70,15 +70,16 @@ namespace Interprete
                                                                                         int radioC = Convert.ToInt32(Analiza_Lexico.Lexema[radioToken]);
                                                                                         string modoC = Analiza_Lexico.Lexema[modoToken];
                                                                                         Carita car = new Carita(nomC, xC, yC, radioC, modoC, true);
-                                                                                        Instruccion ins = new Instruccion("dibujar", 0, car, true, "");
+                                                                                        Instruccion ins = new Instruccion();
+                                                                                        ins.instruccion = "dibujar";
+                                                                                        ins.cara = car;
                                                                                         listai.Add(ins);
                                                                                         i = i + 11;
                                                                                         if (i == Analiza_Lexico.NoTokens - 2) //solo una sentencia
                                                                                         {
                                                                                             respuesta.estado = true;
                                                                                             respuesta.Mensaje = "[●][Estado: Exito] \nNo se han encontrado Errores";
-                                                                                            List<Instruccion> listafinal = analiza_sem.AnalizadorSem(listai);
-                                                                                            respuesta.list = listafinal;
+                                                                                            respuesta.list = analiza_sem.AnalizadorSem(listai);
 
                                                                                             return respuesta;
                                                                                         }
@@ -180,11 +181,16 @@ namespace Interprete
                                                 {
                                                     if (Analiza_Lexico.Lexema[i + 3] == ")")
                                                     {
+                                                        Instruccion ins = new Instruccion();
+                                                        ins.instruccion = "eliminar";
+                                                        ins.nombre = Analiza_Lexico.Lexema[i + 2];
+                                                        listai.Add(ins);
                                                         i = i + 3;
                                                         if (i == Analiza_Lexico.NoTokens - 2)
                                                         {
                                                             respuesta.estado = true;
                                                             respuesta.Mensaje = "[●][Estado: Exito] \nNo se han encontrado Errores";
+                                                            respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                             return respuesta;
                                                             //Console.Out.WriteLine("No se han encontrado Errores");
                                                         }

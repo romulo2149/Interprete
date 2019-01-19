@@ -15,7 +15,7 @@ namespace Interprete
         private int y;
         private int radio;
         private string modo;
-        private bool existe = true;
+        private bool existe;
 
         public Carita(string nombre, int x, int y, int radio, string modo, bool existe)
         {

@@ -16,32 +16,59 @@ namespace Interprete
             for(int i = 0; i < lista.Count; i++)
             {
                 contador = 0;
-                switch (lista[i].Instrucciones)
+                switch (lista[i].instruccion)
                 {
                     case "dibujar":
-                        nombre = lista[i].Cara.Nombre;
+                        nombre = lista[i].cara.Nombre;
                         for (int j = 0; j < lista.Count; j++)
                         {
                             if (i > j)
                             {
-                                if (nombre == lista[j].Cara.Nombre)
+                                if (lista[j].cara != null)
                                 {
-                                    contador++;
+                                    if (nombre == lista[j].cara.Nombre && lista[j].cara.Existe == true)
+                                    {
+                                        contador++;
+                                    }
                                 }
                             }
                         }
                         if (contador < 1)
                         {
-                            lista[i].Mensaje = "No se encontraron errores sintacticos";
-                            lista[i].Estado = true;
+                            lista[i].mensaje = "No se encontraron errores sintacticos";
+                            lista[i].estado = true;
                         }
                         else
                         {
-                            lista[i].Mensaje = "Nombre de cara " + nombre + "ya está asignado a otra cara.";
-                            lista[i].Estado = false;
+                            lista[i].mensaje = "Nombre de cara " + nombre + "ya está asignado a otra cara.";
+                            lista[i].estado = false;
                         }
                         break;
                     case "eliminar":
+                        for (int j = 0; j < lista.Count; j++)
+                        {
+                            if (i > j)
+                            {
+                                if(lista[j].cara != null)
+                                { 
+                                    if (lista[i].nombre == lista[j].cara.Nombre)
+                                    {
+                                        lista[j].cara.Existe = false;
+                                        lista[i].cara = lista[j].cara;
+                                    }
+                                }
+                            }
+                        }
+                        if(lista[i].cara != null)
+                        {
+                            lista[i].mensaje = "No se encontraron errores sintacticos";
+                            lista[i].estado = true;
+                        }
+                        else
+                        {
+                            lista[i].mensaje = "La cara "+lista[i].nombre+" no existe";
+                            lista[i].estado = false;
+                        }
                         break;
                     case "dormir":
                         break;

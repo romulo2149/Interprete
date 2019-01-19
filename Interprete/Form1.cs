@@ -108,42 +108,53 @@ namespace Interprete
                 areaErrores.Text = respuesta.Mensaje;
                 for(int i = 0; i < respuesta.list.Count; i++)
                 {
-                    Thread.Sleep(2000);
-                    switch (respuesta.list[i].Instrucciones)
+                    switch (respuesta.list[i].instruccion)
                     {
                         case "dibujar":
-                            if(respuesta.list[i].Estado == true)
+                            if(respuesta.list[i].estado == true)
                             {
                                 Graphics g = panel1.CreateGraphics();
-                                if (respuesta.list[i].Cara.Modo == "feliz")
+                                if (respuesta.list[i].cara.Modo == "feliz")
                                 {
 
                                     Pen p = new Pen(Color.Black);
                                     SolidBrush s = new SolidBrush(Color.Red);
-                                    g.DrawEllipse(p, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
-                                    g.FillEllipse(s, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
+                                    g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                    g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
                                 }
-                                if (respuesta.list[i].Cara.Modo == "triste")
+                                if (respuesta.list[i].cara.Modo == "triste")
                                 {
                                     Pen p = new Pen(Color.Black);
                                     SolidBrush s = new SolidBrush(Color.Blue);
-                                    g.DrawEllipse(p, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
-                                    g.FillEllipse(s, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
+                                    g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                    g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
                                 }
-                                if (respuesta.list[i].Cara.Modo == "enojada")
+                                if (respuesta.list[i].cara.Modo == "enojada")
                                 {
                                     Pen p = new Pen(Color.Black);
                                     SolidBrush s = new SolidBrush(Color.Yellow);
-                                    g.DrawEllipse(p, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
-                                    g.FillEllipse(s, respuesta.list[i].Cara.X, respuesta.list[i].Cara.Y, respuesta.list[i].Cara.Radio, respuesta.list[i].Cara.Radio);
+                                    g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                    g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
                                 }
                             }
                             else
                             {
-                                textBox1.Text = textBox1.Text + respuesta.list[i].Mensaje;
+                                textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
                             }
                             break;
                         case "eliminar":
+                            if (respuesta.list[i].estado == true)
+                            {
+                                Graphics g = panel1.CreateGraphics();
+                                Pen p = new Pen(Color.White);
+                                SolidBrush s = new SolidBrush(Color.White);
+                                g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                            }
+                            else
+                            {
+                                textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
+                            }
                             break;
                         case "dormir":
                             break;
