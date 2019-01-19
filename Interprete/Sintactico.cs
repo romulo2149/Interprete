@@ -234,14 +234,17 @@ namespace Interprete
                                                 {
                                                     if (Analiza_Lexico.Lexema[i + 3] == ")")
                                                     {
-                                                        int milliseconds = Convert.ToInt32(Analiza_Lexico.Lexema[i + 2]);
-                                                        Thread.Sleep(milliseconds * 1000);
+                                                        int t = Convert.ToInt32(Analiza_Lexico.Lexema[i + 2]);
+                                                        Instruccion ins = new Instruccion();
+                                                        ins.instruccion = "dormir";
+                                                        ins.tiempo = t;
+                                                        listai.Add(ins);
                                                         i = i + 3;
                                                         if (i == Analiza_Lexico.NoTokens - 2)
                                                         {
                                                             respuesta.estado = true;
                                                             respuesta.Mensaje = "[●][Estado: Exito] \nNo se han encontrado Errores";
-
+                                                            respuesta.list = analiza_sem.AnalizadorSem(listai);
                                                             return respuesta;
                                                             //Console.Out.WriteLine("No se han encontrado Errores");
                                                         }

@@ -71,6 +71,8 @@ namespace Interprete
                         }
                         break;
                     case "dormir":
+                        lista[i].mensaje = "Proceso durmiendo por peticion del usuario";
+                        lista[i].estado = true;
                         break;
                     case "cambiar":
                         break;

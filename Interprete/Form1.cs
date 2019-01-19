@@ -157,6 +157,11 @@ namespace Interprete
                             }
                             break;
                         case "dormir":
+                            if (respuesta.list[i].estado == true)
+                            {
+                                Thread.Sleep(1000 * (respuesta.list[i].tiempo));
+                                textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
+                            }
                             break;
                         case "cambiar":
                             break;
