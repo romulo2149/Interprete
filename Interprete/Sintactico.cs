@@ -266,32 +266,39 @@ namespace Interprete
                                                     {
                                                         respuesta.estado = false;
                                                         respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en: " + Analiza_Lexico.Lexema[i + 3] + " Linea: " + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 3]) + "\n[Descripcion]: Se esperaba el elemento )";
-                                                        //Console.Out.WriteLine("Error en: " + Analiza_Lexico.Lexema[i + 3]);
-                                                        //Console.Out.WriteLine("Error [Sintactico]: Se esperaba el elemento )");
-                                                        i = Analiza_Lexico.NoTokens - 2;
-                                                        return respuesta;
+                                                        Instruccion ins = new Instruccion();
+                                                        ins.estado = false;
+                                                        ins.instruccion = "error";
+                                                        ins.mensaje = respuesta.Mensaje;
+                                                        listai.Add(ins);
+                                                        respuesta.list = analiza_sem.AnalizadorSem(listai);
+                                                        i = i + 2;
                                                     }
                                                 }
                                                 else
                                                 {
                                                     respuesta.estado = false;
                                                     respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en: " + Analiza_Lexico.Lexema[i + 2] + " Linea: " + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 2]) + "\n[Descripcion]: Se esperaba un tipo de nombre valido";
-                                                    //respuesta.Mensaje = "Error en: " + Analiza_Lexico.Lexema[i + 2] + "\n" + "Error [Sintactico]: Se esperaba un nombre valido";
-                                                    //Console.Out.WriteLine("Error en: " + Analiza_Lexico.Lexema[i + 2]);
-                                                    //Console.Out.WriteLine("Error [Sintactico]: Se esperaba un nombre valido");
-                                                    i = Analiza_Lexico.NoTokens - 2;
-                                                    return respuesta;
+                                                    Instruccion ins = new Instruccion();
+                                                    ins.estado = false;
+                                                    ins.instruccion = "error";
+                                                    ins.mensaje = respuesta.Mensaje;
+                                                    listai.Add(ins);
+                                                    respuesta.list = analiza_sem.AnalizadorSem(listai);
+                                                    i = i + 1;
                                                 }
                                             }
                                             else
                                             {
                                                 respuesta.estado = false;
                                                 respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en: " + Analiza_Lexico.Lexema[i + 1] + " Linea: " + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 1]) + "\n[Descripcion]: Se esperaba el elemento (";
-                                                //respuesta.Mensaje = "Error en: " + Analiza_Lexico.Lexema[i + 1] + "\n" + "Error[Sintactico]: Se esperaba el elemento(";
-                                                //Console.Out.WriteLine("Error en: " + Analiza_Lexico.Lexema[i + 1]);
-                                                //Console.Out.WriteLine("Error [Sintactico]: Se esperaba el elemento (");
-                                                i = Analiza_Lexico.NoTokens - 2;
-                                                return respuesta;
+                                                Instruccion ins = new Instruccion();
+                                                ins.estado = false;
+                                                ins.instruccion = "error";
+                                                ins.mensaje = respuesta.Mensaje;
+                                                listai.Add(ins);
+                                                respuesta.list = analiza_sem.AnalizadorSem(listai);
+                                                i = i + 0;
                                             }
                                             break;
                                         case "Dormir":
@@ -320,33 +327,39 @@ namespace Interprete
                                                     {
                                                         respuesta.estado = false;
                                                         respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en: " + Analiza_Lexico.Lexema[i + 3] + " Linea: " + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 3]) + "\n[Descripcion]: Se esperaba el elemento )";
-                                                        //respuesta.Mensaje = "Error en: " + Analiza_Lexico.Lexema[i + 3] + "\n" + "Error [Sintactico]: Se esperaba el elemento )";
-                                                        //Console.Out.WriteLine("Error en: " + Analiza_Lexico.Lexema[i + 3]);
-                                                        //Console.Out.WriteLine("Error [Sintactico]: Se esperaba el elemento )");
-                                                        i = Analiza_Lexico.NoTokens - 2;
-                                                        return respuesta;
+                                                        Instruccion ins = new Instruccion();
+                                                        ins.estado = false;
+                                                        ins.instruccion = "error";
+                                                        ins.mensaje = respuesta.Mensaje;
+                                                        listai.Add(ins);
+                                                        respuesta.list = analiza_sem.AnalizadorSem(listai);
+                                                        i = i + 2;
                                                     }
                                                 }
                                                 else
                                                 {
                                                     respuesta.estado = false;
                                                     respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en:" + Analiza_Lexico.Lexema[i + 2] + " Linea:" + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 2]) + "\n[Descripcion]: Se esperaba un tipo numerico";
-                                                    //respuesta.Mensaje = "Error en: " + Analiza_Lexico.Lexema[i + 2] + "\n" + "Error [Sintactico]: Se esperaba un numero";
-                                                    //Console.Out.WriteLine("Error en: " + Analiza_Lexico.Lexema[i + 2]);
-                                                    //Console.Out.WriteLine("Error [Sintactico]: Se esperaba un numero");
-                                                    i = Analiza_Lexico.NoTokens - 2;
-                                                    return respuesta;
+                                                    Instruccion ins = new Instruccion();
+                                                    ins.estado = false;
+                                                    ins.instruccion = "error";
+                                                    ins.mensaje = respuesta.Mensaje;
+                                                    listai.Add(ins);
+                                                    respuesta.list = analiza_sem.AnalizadorSem(listai);
+                                                    i = i + 1;
                                                 }
                                             }
                                             else
                                             {
                                                 respuesta.estado = false;
                                                 respuesta.Mensaje = "[x][Estado : Error]\n" + "[Tipo : Sintactico] Error en: " + Analiza_Lexico.Lexema[i + 1] + " Linea: " + numeroLinea(Codigo, Analiza_Lexico.Lexema[i + 1]) + "\n[Descripcion]: Se esperaba el elemento (";
-                                                //respuesta.Mensaje = "Error en: " + Analiza_Lexico.Lexema[i + 1] + "\n" + "Error [Sintactico]: Se esperaba el elemento (";
-                                                //Console.Out.WriteLine("Error en: " + Analiza_Lexico.Lexema[i + 1]);
-                                                //Console.Out.WriteLine("Error [Sintactico]: Se esperaba el elemento (");
-                                                i = Analiza_Lexico.NoTokens - 2;
-                                                return respuesta;
+                                                Instruccion ins = new Instruccion();
+                                                ins.estado = false;
+                                                ins.instruccion = "error";
+                                                ins.mensaje = respuesta.Mensaje;
+                                                listai.Add(ins);
+                                                respuesta.list = analiza_sem.AnalizadorSem(listai);
+                                                i = i + 0;
                                             }
                                             break;
                                         case "CambiarModo":

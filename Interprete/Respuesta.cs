@@ -11,8 +11,6 @@ namespace Interprete
     {
         public Boolean estado;
         public String Mensaje;
-        public String instruccion;
-        public Carita cara;
         public List<Instruccion> list;
         
     }
