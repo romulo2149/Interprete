@@ -120,22 +120,22 @@ namespace Interprete
 
                                         Pen p = new Pen(Color.Black);
                                         SolidBrush s = new SolidBrush(Color.Red);
-                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
-                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio*2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio * 2);
                                     }
                                     if (respuesta.list[i].cara.Modo == "triste")
                                     {
                                         Pen p = new Pen(Color.Black);
                                         SolidBrush s = new SolidBrush(Color.Blue);
-                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
-                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio * 2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio * 2);
                                     }
                                     if (respuesta.list[i].cara.Modo == "enojada")
                                     {
                                         Pen p = new Pen(Color.Black);
                                         SolidBrush s = new SolidBrush(Color.Yellow);
-                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
-                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio * 2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio * 2);
                                     }
                                 }
                                 else
