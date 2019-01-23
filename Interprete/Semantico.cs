@@ -33,9 +33,12 @@ namespace Interprete
                         {
                             if (lista[x].cara != null)
                             {
-                                if (pX > lista[x].cara.X && pX < lista[x].cara.X + (2 * lista[x].cara.Radio) && pY > lista[x].cara.Y && pY < lista[x].cara.Y + (2 * lista[x].cara.Radio) && lista[x].cara.Existe == true)
+                                if (i > x)
                                 {
-                                    contadorError++;
+                                    if (pX >= lista[x].cara.X && pX <= (lista[x].cara.X + (2 * lista[x].cara.Radio)) && pY >= lista[x].cara.Y && pY <= (lista[x].cara.Y + (2 * lista[x].cara.Radio)) && lista[x].cara.Existe == true)
+                                    {
+                                        contadorError++;
+                                    }
                                 }
                             }
                         }

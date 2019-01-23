@@ -194,6 +194,7 @@ namespace Interprete
                                 {
                                     Graphics g = panel1.CreateGraphics();
                                     Pen p = new Pen(Color.White);
+                                    p.Width = 4;
                                     SolidBrush s = new SolidBrush(Color.White);
                                     g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio*2);
                                     g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio*2);
