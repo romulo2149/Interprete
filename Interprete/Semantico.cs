@@ -12,7 +12,6 @@ namespace Interprete
         
         public List<Instruccion> AnalizadorSem(List<Instruccion> lista)
         {
-            List<Canvas> puntos = new List<Canvas>();
             int contador = 0;
             int contadorError = 0;
             int pX;
@@ -30,11 +29,14 @@ namespace Interprete
                         pX = lista[i].cara.X;
                         pY = lista[i].cara.Y;
                         pRadio = lista[i].cara.Radio;
-                        for (int x = 0; x < puntos.Count; x++)
+                        for (int x = 0; x < lista.Count; x++)
                         {
-                            if(pX > puntos[x].X1 && pX < puntos[x].X2 && pY > puntos[x].Y1 && pY < puntos[x].Y2)
+                            if (lista[x].cara != null)
                             {
-                                contadorError++;
+                                if (pX > lista[x].cara.X && pX < lista[x].cara.X + (2 * lista[x].cara.Radio) && pY > lista[x].cara.Y && pY < lista[x].cara.Y + (2 * lista[x].cara.Radio) && lista[x].cara.Existe == true)
+                                {
+                                    contadorError++;
+                                }
                             }
                         }
                         if (contadorError == 0)
@@ -54,8 +56,6 @@ namespace Interprete
                             }
                             if (contador < 1)
                             {
-                                Canvas c = new Canvas(pX, pY, (pX + (2 * pRadio)), (pY + (2 * pRadio)));
-                                puntos.Add(c);
                                 lista[i].mensaje = "No se encontraron errores sintacticos";
                                 lista[i].estado = true;
                             }
@@ -107,6 +107,31 @@ namespace Interprete
                         lista[i].estado = true;
                         break;
                     case "cambiar":
+                        for (int j = 0; j < lista.Count; j++)
+                        {
+                            if (i > j)
+                            {
+                                if (lista[j].cara != null)
+                                {
+                                    if (lista[i].nombre == lista[j].cara.Nombre)
+                                    {
+                                        
+                                        lista[i].cara = lista[j].cara;
+                                        lista[j].cara.Existe = false;
+                                    }
+                                }
+                            }
+                        }
+                        if (lista[i].cara != null)
+                        {
+                            lista[i].mensaje = "No se encontraron errores sintacticos";
+                            lista[i].estado = true;
+                        }
+                        else
+                        {
+                            lista[i].mensaje = "La cara " + lista[i].nombre + " no existe";
+                            lista[i].estado = false;
+                        }
                         break;
          
                 }

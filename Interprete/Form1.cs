@@ -150,8 +150,8 @@ namespace Interprete
                                     Graphics g = panel1.CreateGraphics();
                                     Pen p = new Pen(Color.White);
                                     SolidBrush s = new SolidBrush(Color.White);
-                                    g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
-                                    g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio);
+                                    g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio*2);
+                                    g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio*2, respuesta.list[i].cara.Radio*2);
                                 }
                                 else
                                 {
@@ -166,6 +166,39 @@ namespace Interprete
                                 }
                                 break;
                             case "cambiar":
+                                if (respuesta.list[i].estado == true)
+                                {
+                                    textBox1.Text = respuesta.list[i].cambio +" " + respuesta.list[i].cara.Nombre;
+                                    Graphics g = panel1.CreateGraphics();
+                                    
+                                    if (respuesta.list[i].cambio == "feliz")
+                                    {
+                                        Pen p = new Pen(Color.Black);
+                                        SolidBrush s = new SolidBrush(Color.Red);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                    }
+                                    if (respuesta.list[i].cambio == "triste")
+                                    {
+                                        Pen p = new Pen(Color.Black);
+                                        SolidBrush s = new SolidBrush(Color.Blue);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                    }
+                                    if (respuesta.list[i].cambio == "enojada")
+                                    {
+                                        Pen p = new Pen(Color.Black);
+                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                    }
+                                    
+                                }
+                                else
+                                {
+
+                                    textBox1.Text += textBox1.Text + respuesta.list[i].mensaje;
+                                }
                                 break;
                             case "error":
                                 if (respuesta.list[i].estado == true)
