@@ -182,6 +182,45 @@ namespace Interprete
                                         g.DrawLine(p, ceja1, ceja2);
                                         g.DrawLine(p, ceja3, ceja4);
                                     }
+                                    if (respuesta.list[i].cara.Modo == "dormida")
+                                    {
+                                        Pen p = new Pen(Color.Black);
+                                        p.Width = 3;
+                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        SolidBrush b = new SolidBrush(Color.Black);
+                                        
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        //Ojo Izq
+                                        Rectangle izq = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.DrawArc(p, izq, 0, 180);
+                                        //Ojo Der
+                                        Rectangle der = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.DrawArc(p, der, 0, 180);
+                                        //Boca
+
+                                        Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
+                                        g.DrawArc(p, r, 0, 180);
+                                    }
+                                    if(respuesta.list[i].cara.Modo == "neutral")
+                                    {
+                                        Pen p = new Pen(Color.Black);
+                                        p.Width = 3;
+                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        SolidBrush b = new SolidBrush(Color.Black);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        //Ojo Izq
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Ojo Der
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Boca
+                                        Point p1 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4);
+                                        Point p2 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4);
+                                        g.DrawLine(p, p1, p2);
+                                    }
                                 }
                                 else
                                 {
@@ -220,25 +259,108 @@ namespace Interprete
                                     if (respuesta.list[i].cambio == "feliz")
                                     {
                                         Pen p = new Pen(Color.Black);
-                                        SolidBrush s = new SolidBrush(Color.Red);
+                                        p.Width = 3;
+                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        SolidBrush b = new SolidBrush(Color.Black);
                                         g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
                                         g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        //Ojo Izq
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Ojo Der
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Boca
+
+                                        Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
+                                        g.DrawArc(p, r, 0, 180);
                                     }
                                     if (respuesta.list[i].cambio == "triste")
                                     {
+
                                         Pen p = new Pen(Color.Black);
-                                        SolidBrush s = new SolidBrush(Color.Blue);
+                                        p.Width = 3;
+                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        SolidBrush b = new SolidBrush(Color.Black);
                                         g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
                                         g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        //Ojo Izq
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Ojo Der
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Boca
+                                        p.Width = 2;
+                                        Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
+                                        g.DrawArc(p, r, 180, 180);
                                     }
                                     if (respuesta.list[i].cambio == "enojada")
                                     {
                                         Pen p = new Pen(Color.Black);
+                                        p.Width = 4;
                                         SolidBrush s = new SolidBrush(Color.Yellow);
+                                        SolidBrush b = new SolidBrush(Color.Black);
                                         g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
                                         g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        //Ojo Izq
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Ojo Der
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Boca
+                                        p.Width = 2;
+                                        Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
+                                        g.DrawArc(p, r, 180, 180);
+                                        //Cejas
+                                        Point ceja1 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 4);
+                                        Point ceja2 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2);
+                                        Point ceja3 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 4);
+                                        Point ceja4 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2);
+                                        g.DrawLine(p, ceja1, ceja2);
+                                        g.DrawLine(p, ceja3, ceja4);
                                     }
-                                    
+                                    if (respuesta.list[i].cara.Modo == "dormida")
+                                    {
+                                        Pen p = new Pen(Color.Black);
+                                        p.Width = 3;
+                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        SolidBrush b = new SolidBrush(Color.Black);
+
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        //Ojo Izq
+                                        Rectangle izq = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.DrawArc(p, izq, 0, 180);
+                                        //Ojo Der
+                                        Rectangle der = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.DrawArc(p, der, 0, 180);
+                                        //Boca
+
+                                        Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
+                                        g.DrawArc(p, r, 0, 180);
+                                    }
+                                    if (respuesta.list[i].cara.Modo == "neutral")
+                                    {
+                                        Pen p = new Pen(Color.Black);
+                                        p.Width = 3;
+                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        SolidBrush b = new SolidBrush(Color.Black);
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
+                                        //Ojo Izq
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Ojo Der
+                                        g.DrawEllipse(p, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        g.FillEllipse(b, respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio / 4);
+                                        //Boca
+                                        Point p1 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4);
+                                        Point p2 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4);
+                                        g.DrawLine(p, p1, p2);
+                                    }
+
                                 }
                                 else
                                 {
