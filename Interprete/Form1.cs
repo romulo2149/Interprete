@@ -321,7 +321,7 @@ namespace Interprete
                                         g.DrawLine(p, ceja1, ceja2);
                                         g.DrawLine(p, ceja3, ceja4);
                                     }
-                                    if (respuesta.list[i].cara.Modo == "dormida")
+                                    if (respuesta.list[i].cambio == "dormida")
                                     {
                                         Pen p = new Pen(Color.Black);
                                         p.Width = 3;
@@ -341,7 +341,7 @@ namespace Interprete
                                         Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
                                         g.DrawArc(p, r, 0, 180);
                                     }
-                                    if (respuesta.list[i].cara.Modo == "neutral")
+                                    if (respuesta.list[i].cambio == "neutral")
                                     {
                                         Pen p = new Pen(Color.Black);
                                         p.Width = 3;

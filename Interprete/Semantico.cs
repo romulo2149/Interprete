@@ -31,11 +31,33 @@ namespace Interprete
                         pRadio = lista[i].cara.Radio;
                         for (int x = 0; x < lista.Count; x++)
                         {
+                            
                             if (lista[x].cara != null)
                             {
+                                int x1 = lista[x].cara.X;
+                                int y1 = lista[x].cara.Y;
+                                int x2 = lista[x].cara.X + (2 * lista[x].cara.Radio);
+                                int y2 = lista[x].cara.Y + (2 * lista[x].cara.Radio);
+                                int rradio = (2 * lista[x].cara.Radio);
                                 if (i > x)
                                 {
-                                    if (pX >= lista[x].cara.X && pX <= (lista[x].cara.X + (2 * lista[x].cara.Radio)) && pY >= lista[x].cara.Y && pY <= (lista[x].cara.Y + (2 * lista[x].cara.Radio)) && lista[x].cara.Existe == true)
+                                    if (pX >= x1 && pX <= x2 && pY >= y1 && pY <= y2 && lista[x].cara.Existe == true)
+                                    {
+                                        contadorError++;
+                                    }
+                                    if (pX + rradio >= x1 && pX + rradio <= x2 && pY + rradio >= y1 && pY + rradio <= y2 && lista[x].cara.Existe == true)
+                                    {
+                                        contadorError++;
+                                    }
+                                    if (pX + rradio >= x1 && pX + rradio <= x2 && pY >= y1 && pY <= y2 && lista[x].cara.Existe == true)
+                                    {
+                                        contadorError++;
+                                    }
+                                    if (pX >= x1 && pX <= x2 && pY + rradio >= y1 && pY + rradio <= y2 && lista[x].cara.Existe == true)
+                                    {
+                                        contadorError++;
+                                    }
+                                    if(pX <= x2 && pY <= y2 && pX+rradio >= x1 && pY+rradio >= y1)
                                     {
                                         contadorError++;
                                     }
