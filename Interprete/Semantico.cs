@@ -29,72 +29,109 @@ namespace Interprete
                         pX = lista[i].cara.X;
                         pY = lista[i].cara.Y;
                         pRadio = lista[i].cara.Radio;
-                        for (int x = 0; x < lista.Count; x++)
+                        if (pX < 436 && pY < 392 && pRadio < 196 && pRadio > 49 && pX +(2*pRadio) < 436 && pY + (2 * pRadio) < 392)
                         {
-                            
-                            if (lista[x].cara != null)
+                            for (int x = 0; x < lista.Count; x++)
                             {
-                                int x1 = lista[x].cara.X;
-                                int y1 = lista[x].cara.Y;
-                                int x2 = lista[x].cara.X + (2 * lista[x].cara.Radio);
-                                int y2 = lista[x].cara.Y + (2 * lista[x].cara.Radio);
-                                int rradio = (2 * lista[x].cara.Radio);
-                                if (i > x)
+
+                                if (lista[x].cara != null)
                                 {
-                                    if (pX >= x1 && pX <= x2 && pY >= y1 && pY <= y2 && lista[x].cara.Existe == true)
+                                    int x1 = lista[x].cara.X;
+                                    int y1 = lista[x].cara.Y;
+                                    int x2 = lista[x].cara.X + (2 * lista[x].cara.Radio);
+                                    int y2 = lista[x].cara.Y + (2 * lista[x].cara.Radio);
+                                    int rradio = (2 * lista[x].cara.Radio);
+                                    if (i > x)
                                     {
-                                        contadorError++;
-                                    }
-                                    if (pX + rradio >= x1 && pX + rradio <= x2 && pY + rradio >= y1 && pY + rradio <= y2 && lista[x].cara.Existe == true)
-                                    {
-                                        contadorError++;
-                                    }
-                                    if (pX + rradio >= x1 && pX + rradio <= x2 && pY >= y1 && pY <= y2 && lista[x].cara.Existe == true)
-                                    {
-                                        contadorError++;
-                                    }
-                                    if (pX >= x1 && pX <= x2 && pY + rradio >= y1 && pY + rradio <= y2 && lista[x].cara.Existe == true)
-                                    {
-                                        contadorError++;
-                                    }
-                                    if(pX <= x2 && pY <= y2 && pX+rradio >= x1 && pY+rradio >= y1)
-                                    {
-                                        contadorError++;
-                                    }
-                                }
-                            }
-                        }
-                        if (contadorError == 0)
-                        {
-                            for (int j = 0; j < lista.Count; j++)
-                            {
-                                if (i > j)
-                                {
-                                    if (lista[j].cara != null)
-                                    {
-                                        if (nombre == lista[j].cara.Nombre && lista[j].cara.Existe == true)
+                                        if (pX >= x1 && pX <= x2 && pY >= y1 && pY <= y2 && lista[x].cara.Existe == true)
                                         {
-                                            contador++;
+                                            contadorError++;
+                                        }
+                                        if (pX + rradio >= x1 && pX + rradio <= x2 && pY + rradio >= y1 && pY + rradio <= y2 && lista[x].cara.Existe == true)
+                                        {
+                                            contadorError++;
+                                        }
+                                        if (pX + rradio >= x1 && pX + rradio <= x2 && pY >= y1 && pY <= y2 && lista[x].cara.Existe == true)
+                                        {
+                                            contadorError++;
+                                        }
+                                        if (pX >= x1 && pX <= x2 && pY + rradio >= y1 && pY + rradio <= y2 && lista[x].cara.Existe == true)
+                                        {
+                                            contadorError++;
+                                        }
+                                        if (pX <= x2 && pY <= y2 && pX + rradio >= x1 && pY + rradio >= y1 && lista[x].cara.Existe == true)
+                                        {
+                                            contadorError++;
                                         }
                                     }
                                 }
                             }
-                            if (contador < 1)
+                            if (contadorError == 0)
                             {
-                                lista[i].mensaje = "No se encontraron errores sintacticos";
-                                lista[i].estado = true;
+                                for (int j = 0; j < lista.Count; j++)
+                                {
+                                    if (i > j)
+                                    {
+                                        if (lista[j].cara != null)
+                                        {
+                                            if (nombre == lista[j].cara.Nombre && lista[j].cara.Existe == true)
+                                            {
+                                                contador++;
+                                            }
+                                        }
+                                    }
+                                }
+                                if (contador < 1)
+                                {
+                                    lista[i].mensaje = "No se encontraron errores sintacticos";
+                                    lista[i].estado = true;
+                                }
+                                else
+                                {
+                                    lista[i].mensaje = "Nombre de cara " + nombre + "ya está asignado a otra cara.";
+                                    lista[i].estado = false;
+                                }
                             }
                             else
                             {
-                                lista[i].mensaje = "Nombre de cara " + nombre + "ya está asignado a otra cara.";
+                                lista[i].cara.Existe = false;
+                                lista[i].mensaje = "Ya existe una cara en ese espacio, cambia las coordenadas";
                                 lista[i].estado = false;
                             }
                         }
                         else
                         {
-                            lista[i].cara.Existe = false;
-                            lista[i].mensaje = "Ya existe una cara en ese espacio, cambia las coordenadas";
-                            lista[i].estado = false;
+                            if(pX > 436)
+                            {
+                                lista[i].cara.Existe = false;
+                                lista[i].mensaje = "Coordenada X fuera de los límites";
+                                lista[i].estado = false;
+                            }
+                            else
+                            {
+                                if (pY > 392)
+                                {
+                                    lista[i].cara.Existe = false;
+                                    lista[i].mensaje = "Coordenada Y fuera de los límites";
+                                    lista[i].estado = false;
+                                }
+                                else
+                                {
+                                    if (pRadio < 50)
+                                    {
+                                        lista[i].cara.Existe = false;
+                                        lista[i].mensaje = "Radio muy pequeño";
+                                        lista[i].estado = false;
+                                    }
+                                    else
+                                    {
+                                        lista[i].cara.Existe = false;
+                                        lista[i].mensaje = "Radio muy grande";
+                                        lista[i].estado = false;
+                                    }
+                                }
+                            }
+                            
                         }
                         break;
                     case "eliminar":
@@ -162,6 +199,22 @@ namespace Interprete
                 }
             }
             return lista;
+        }
+
+        public bool ErrorExiste(List<Instruccion> lista, int linea)
+        {
+            bool bandera = false;
+            for(int i = 0; i < lista.Count; i++)
+            {
+                if(lista[i].instruccion != null)
+                {
+                    if (lista[i].instruccion == "error" && lista[i].linea == linea)
+                    {
+                        bandera = true;
+                    }
+                }
+            }
+            return bandera;
         }
     }
 }

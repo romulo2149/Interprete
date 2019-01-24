@@ -18,7 +18,7 @@ namespace Interprete
 
         String rutaArchivo;
         String nombre;
-        String nombreInterprete = "Interprete Mamalon";
+        String nombreInterprete = "Interprete";
         Sintactico sintaxis = new Sintactico();
 
         public Form1()
@@ -93,13 +93,15 @@ namespace Interprete
         private void botonEjecutar_Click(object sender, EventArgs e)
         {
             Respuesta respuesta = new Respuesta();
-      
+            areaErrores.Text = "";
+            Graphics d = panel1.CreateGraphics();
+            d.Clear(Color.White);
             if ((areaEditor.Text).Length == 0)
             {
                 respuesta.estado = false;
                 respuesta.Mensaje = "[•][Estado : Exito]\n" + "[Tipo : nulo] " + "\n[Descripcion]: No hay nada que analizar";
                 areaErrores.Text = respuesta.Mensaje;
-                textBox1.Text = "hola";
+               
 
             }
             else
@@ -134,6 +136,20 @@ namespace Interprete
                                         
                                         Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio , respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
                                         g.DrawArc(p, r, 0, 180);
+
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str+"...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
                                     if (respuesta.list[i].cara.Modo == "triste")
                                     {
@@ -154,13 +170,26 @@ namespace Interprete
                                         p.Width = 2;
                                         Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
                                         g.DrawArc(p, r, 180, 180);
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str + "...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
                                     if (respuesta.list[i].cara.Modo == "enojada")
                                     {
                                         
                                         Pen p = new Pen(Color.Black);
                                         p.Width = 4;
-                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        SolidBrush s = new SolidBrush(Color.Red);
                                         SolidBrush b = new SolidBrush(Color.Black);
                                         g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
                                         g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
@@ -181,6 +210,19 @@ namespace Interprete
                                         Point ceja4 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2);
                                         g.DrawLine(p, ceja1, ceja2);
                                         g.DrawLine(p, ceja3, ceja4);
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str + "...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
                                     if (respuesta.list[i].cara.Modo == "dormida")
                                     {
@@ -201,6 +243,19 @@ namespace Interprete
 
                                         Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
                                         g.DrawArc(p, r, 0, 180);
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str + "...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
                                     if(respuesta.list[i].cara.Modo == "neutral")
                                     {
@@ -220,12 +275,25 @@ namespace Interprete
                                         Point p1 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4);
                                         Point p2 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4);
                                         g.DrawLine(p, p1, p2);
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str + "...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
                                 }
                                 else
                                 {
                                    
-                                    textBox1.Text += textBox1.Text + respuesta.list[i].mensaje;
+                                    
                                 }
                                 break;
                             case "eliminar":
@@ -240,20 +308,29 @@ namespace Interprete
                                 }
                                 else
                                 {
-                                    textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
+                                    if (areaErrores.Text == "")
+                                    {
+                                        areaErrores.Text = respuesta.list[i].mensaje;
+                                    }
+                                    else
+                                    {
+                                        areaErrores.Text += Environment.NewLine;
+                                        areaErrores.Text += "__________________________________________________________________";
+                                        areaErrores.Text += Environment.NewLine;
+                                        areaErrores.Text += respuesta.list[i].mensaje;
+                                    }
                                 }
                                 break;
                             case "dormir":
                                 if (respuesta.list[i].estado == true)
                                 {
                                     Thread.Sleep(1000 * (respuesta.list[i].tiempo));
-                                    textBox1.Text = textBox1.Text + respuesta.list[i].mensaje;
                                 }
                                 break;
                             case "cambiar":
                                 if (respuesta.list[i].estado == true)
                                 {
-                                    textBox1.Text = respuesta.list[i].cambio +" " + respuesta.list[i].cara.Nombre;
+                                    
                                     Graphics g = panel1.CreateGraphics();
                                     
                                     if (respuesta.list[i].cambio == "feliz")
@@ -274,6 +351,19 @@ namespace Interprete
 
                                         Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
                                         g.DrawArc(p, r, 0, 180);
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str + "...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
                                     if (respuesta.list[i].cambio == "triste")
                                     {
@@ -294,12 +384,25 @@ namespace Interprete
                                         p.Width = 2;
                                         Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
                                         g.DrawArc(p, r, 180, 180);
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str + "...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
                                     if (respuesta.list[i].cambio == "enojada")
                                     {
                                         Pen p = new Pen(Color.Black);
                                         p.Width = 4;
-                                        SolidBrush s = new SolidBrush(Color.Yellow);
+                                        SolidBrush s = new SolidBrush(Color.Red);
                                         SolidBrush b = new SolidBrush(Color.Black);
                                         g.DrawEllipse(p, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
                                         g.FillEllipse(s, respuesta.list[i].cara.X, respuesta.list[i].cara.Y, respuesta.list[i].cara.Radio * 2, respuesta.list[i].cara.Radio * 2);
@@ -320,6 +423,19 @@ namespace Interprete
                                         Point ceja4 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio / 2);
                                         g.DrawLine(p, ceja1, ceja2);
                                         g.DrawLine(p, ceja3, ceja4);
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str + "...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
                                     if (respuesta.list[i].cambio == "dormida")
                                     {
@@ -340,6 +456,19 @@ namespace Interprete
 
                                         Rectangle r = new Rectangle(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio, respuesta.list[i].cara.Radio / 2);
                                         g.DrawArc(p, r, 0, 180);
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str + "...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
                                     if (respuesta.list[i].cambio == "neutral")
                                     {
@@ -359,13 +488,36 @@ namespace Interprete
                                         Point p1 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4);
                                         Point p2 = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio + respuesta.list[i].cara.Radio / 4);
                                         g.DrawLine(p, p1, p2);
+                                        // nombre
+                                        int longitudNombre = respuesta.list[i].cara.Nombre.Length;
+                                        if (longitudNombre > 8)
+                                        {
+                                            string str = respuesta.list[i].cara.Nombre.Substring(0, 8);
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(str + "...", Font, b, po);
+                                        }
+                                        else
+                                        {
+                                            Point po = new Point(respuesta.list[i].cara.X + respuesta.list[i].cara.Radio / 2 + respuesta.list[i].cara.Radio / 6, respuesta.list[i].cara.Y + respuesta.list[i].cara.Radio);
+                                            g.DrawString(respuesta.list[i].cara.Nombre, Font, b, po);
+                                        }
                                     }
 
                                 }
                                 else
                                 {
 
-                                    textBox1.Text += textBox1.Text + respuesta.list[i].mensaje;
+                                    if (areaErrores.Text == "")
+                                    {
+                                        areaErrores.Text = respuesta.list[i].mensaje;
+                                    }
+                                    else
+                                    {
+                                        areaErrores.Text += Environment.NewLine;
+                                        areaErrores.Text += "__________________________________________________________________";
+                                        areaErrores.Text += Environment.NewLine;
+                                        areaErrores.Text += respuesta.list[i].mensaje;
+                                    }
                                 }
                                 break;
                             case "error":

@@ -15,6 +15,7 @@ namespace Interprete
         public Carita cara;
         public bool estado;
         public string mensaje;
+        public int linea;
         
     }
 }
